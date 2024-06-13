@@ -25,17 +25,17 @@ Route::get('/',function()
     return view('frontend.index');
 });
 
-Route::get('/adetails',function()
+Route::get('/storydetails',function()
 {
-    return view('frontend.adetails');
+    return view('frontend.stroydetails');
 });
-Route::get('/awatching',function()
+Route::get('/storyreading',function()
 {
-    return view('frontend.awatching');
+    return view('frontend.storyreading');
 });
-Route::get('/bdetails',function()
+Route::get('/storywriting',function()
 {
-    return view('frontend.bdetails');
+    return view('frontend.storywriting');
 });
 Route::get('/blog',function()
 {
@@ -62,17 +62,17 @@ Route::get('/footer',function()
     return view('footer');
 });
 
-Route::get('/table',function()
+Route::get('/tableofContent',function()
 {
-    return view('frontend.table');
+    return view('frontend.tableofContent');
 });
 // Route::get('/table',function()
 // {
 //     return view('layouts.table');
 // });
-Route::get('/write',function()
+Route::get('/video',function()
 {
-    return view('frontend.write');
+    return view('frontend.video');
 });
 Route::get('/read',function()
 {

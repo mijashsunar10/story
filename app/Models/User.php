@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Enums\Role;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
@@ -44,5 +46,10 @@ class User extends Authenticatable
             'password' => 'hashed',
             'role' => Role::class
         ];
+    }
+
+    public function user_details():HasOne
+    {
+        return $this->hasOne(UserDetails::class,foreignKey:'user_id',localKey:'id');
     }
 }
