@@ -74,28 +74,7 @@
 
 <body class="bg-dark bg-gradient ">
 
-
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <div class="d-flex align-items-center">
-        <button class="btn btn-outline-secondary me-2 btn-dark text-white " type="button">&lt;</button>
-        <div class="m-0">
-          <small class="text-muted d-block">Add Story Name</small>
-          <h5 class="navbar-brand">Untitled Story</h5>
-        </div>
-      </div>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <div>
-          <button class="btn btn-outline-secondary me-2" type="button">Cancel</button>
-          <button class="btn btn-dark" type="button">Skip</button>
-        </div>
-      </div>
-    </div>
-  </nav>
-
+@include('layouts.nav');
 
 
   <section class="p-3 p-md-4 p-xl-5">
@@ -106,7 +85,7 @@
         
           <div class="container-fluid  d-flex flex-row justify-content-around ">
               <div class="hover_item">
-               <a class="btn btn-light btn-sm fs-5 fw-bold" href="{{url('new')}}" role="button " style="">Story Details </a>
+               <a class="btn btn-light btn-sm fs-5 fw-bold" href="{{url('storydetails')}}" role="button " style="">Story Details </a>
               </div>
               {{-- <nav class="nav">
                 <a class="nav-link active" aria-current="page" href="#">Active</a>

@@ -20,12 +20,17 @@
                             <li class="active"><a href="{{url('/')}}">Home</a></li>
                             <li><a href="{{url('categories')}}">Categories<span class="arrow_carrot-down"></span></a>
                                 <ul class="dropdown">
-                                    <li><a href="{{url('categories')}}">Categories</a></li>
-                                    <li><a href="{{url('adetails')}}">Anime Details</a></li>
-                                    <li><a href="{{url('awatching')}}">Anime Watching</a></li>
-                                    <li><a href="{{url('bdetails')}}">Blog Details</a></li>
-                                    <li><a href="{{url('signup')}}">Sign Up</a></li>
-                                    <li><a href="{{url('login')}}">Login</a></li>
+                                    <li><a href="{{url('categories')}}">Science Fiction</a></li>
+                                    <li><a href="{{url('adetails')}}">Comedy</a></li>
+                                    <li><a href="{{url('awatching')}}">Love</a></li>                                    <li><a href="{{url('signup')}}">Sign Up</a></li>
+                                    <li><a href="{{url('awatching')}}">Fantasy</a></li>                                    <li><a href="{{url('signup')}}">Sign Up</a></li>
+                                    <li><a href="{{url('login')}}">Mystery</a></li>
+                                    <li><a href="{{url('login')}}">Mythology</a></li>
+                                    <li><a href="{{url('login')}}">Legend</a></li>
+                                    <li><a href="{{url('login')}}">Fairy Tale</a></li>
+                                    <li><a href="{{url('login')}}">Historical</a></li>
+                                    <li><a href="{{url('login')}}">Drama</a></li>
+                                    <li><a href="{{url('login')}}">Fable</a></li>
                                 </ul>
 
                                 {{-- <ul class="dropdown">
@@ -63,7 +68,7 @@
                                 </div> 
                                 
                               </li> --}}
-                            <li><a href="{{url('write')}}">Write</a></li>
+                            <li><a href="{{route('storydetails.create')}}">Write</a></li>
                             <li><a href="#">Contacts</a></li>
                         </ul>
                     </nav>

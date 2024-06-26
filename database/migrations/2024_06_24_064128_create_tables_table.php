@@ -11,14 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_details', function (Blueprint $table) {
+        Schema::create('tables', function (Blueprint $table) {
             $table->id();
-            $table -> foreignId('user_id');
-            $table -> foreign('user_id')->references('id')->on('users')->onDelete('cascade'); 
-            $table -> string ('phone')->nullable();
-            $table -> string('address')->nullable();
-            $table -> enum('gender',['male','female','other']);
-
             $table->timestamps();
         });
     }
@@ -28,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_details');
+        Schema::dropIfExists('tables');
     }
 };

@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StorydetailsController;
+use App\Models\Storydetails;
 use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\StoryController;
 
@@ -25,10 +27,10 @@ Route::get('/',function()
     return view('frontend.index');
 });
 
-Route::get('/storydetails',function()
-{
-    return view('frontend.stroydetails');
-});
+// Route::get('/storydetails',function()
+// {
+//     return view('frontend.storydetails');
+// });
 Route::get('/storyreading',function()
 {
     return view('frontend.storyreading');
@@ -79,6 +81,10 @@ Route::get('/read',function()
     return view('frontend.read');
 
 });
+Route::get('/intro',function()
+{
+    return view('frontend.stroyintro');
+});
 
 
 
@@ -111,5 +117,5 @@ Route::get('/writing2',function()
     return view('frontend.writing2');
 });
 
-
+Route::resource('storydetails',StorydetailsController::class);
 require __DIR__.'/auth.php';

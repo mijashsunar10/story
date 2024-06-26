@@ -1,19 +1,20 @@
 <?php
 
 namespace Database\Seeders;
+use App\Models\Category;
 
-use App\Models\UserDetails;
+
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class UserDetailsSeeder extends Seeder
+class CategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        
-        UserDetails::factory()->count(50)->create();
+        Category::query()->delete();
+        Category::factory()->count(100)->create(); 
     }
 }

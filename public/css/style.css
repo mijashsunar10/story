@@ -413,6 +413,13 @@ ol {
 	font-weight: 500;
 	padding: 5px 20px;
 }
+.header__menu ul li .dropdown li a:hover {
+
+	font-weight: bold;
+	/* text-decoration: underline; */
+	background-color:whitesmoke;
+	
+}
 
 .header__menu ul li a {
 	font-size: 15px;

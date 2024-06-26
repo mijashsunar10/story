@@ -48,27 +48,6 @@
 <body class="bg-dark bg-gradient ">
 
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <div class="d-flex align-items-center">
-        <button class="btn btn-outline-secondary me-2 btn-dark text-white " type="button">&lt;</button>
-        <div class="m-0">
-          <small class="text-muted d-block">Add Story Name</small>
-          <h5 class="navbar-brand">Untitled Story</h5>
-        </div>
-      </div>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <div>
-          <button class="btn btn-outline-secondary me-2" type="button">Cancel</button>
-          <button class="btn btn-dark" type="button">Skip</button>
-        </div>
-      </div>
-    </div>
-  </nav>
-
 
 
   <section class="p-3 p-md-4 p-xl-5">
@@ -79,7 +58,7 @@
         
           <div class="container-fluid  d-flex flex-row justify-content-around ">
               <div class="hover_item">
-               <a class="btn btn-light btn-sm fs-5 fw-bold" href="#" role="button " style="">Story Details </a>
+               <a class="btn btn-light btn-sm fs-5 fw-bold" href="{{route('storydetails.create')}}" role="button " style="">Story Details </a>
               </div>
               {{-- <nav class="nav">
                 <a class="nav-link active" aria-current="page" href="#">Active</a>
@@ -88,13 +67,16 @@
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
               </nav> --}}
               <div class="hover_item">
-               <a class="btn btn-light btn-sm fs-5 fw-bold" href="{{url('table')}}" role="button"> Table of Contents</a>
+               <a class="btn btn-light btn-sm fs-5 fw-bold" href="{{url('tableofContent')}}" role="button"> Table of Contents</a>
               </div>
               <div class="hover_item">
                 <a class="btn btn-light btn-sm fs-5 fw-bold" href="#" role="button"> Story Notes</a>
               </div>
           </div>
         </nav>
+
+        <form action="{{route('storydetails.store')}} " method="POST" enctype="multipart/form-data">
+          @csrf
         <div class="row g-0">
           <div class="col-12 col-md-6 text-bg-primary">
             <div class="d-flex align-items-center justify-content-center h-100">
@@ -131,7 +113,8 @@
                   </div>
                 </div>
               </div>
-              <form action="#!">
+              <form action="{{route('storydetails.store')}}" method="POST">
+                @csrf
                 <div class="row gy-3 gy-md-4 overflow-hidden">
 
                   <div class="col-12">
@@ -233,7 +216,7 @@
                   </div>
                   <div class="col-12">
                     <div class="d-grid">
-                      <button class="btn btn-outline-dark me-2" type="button">Submit</button>
+                      <button class="btn btn-outline-dark me-2" type="submit">Submit</button>
                     </div>
                   </div>
                 </div>
@@ -242,6 +225,7 @@
             </div>
           </div>
         </div>
+      </form>
       </div>
     </div>
   </section>

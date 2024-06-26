@@ -2,18 +2,18 @@
 
 namespace Database\Seeders;
 
-use App\Models\UserDetails;
+use App\Models\Storywriting;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class UserDetailsSeeder extends Seeder
+class StorywritingSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        
-        UserDetails::factory()->count(50)->create();
+        Storywriting::query()->delete();
+        Storywriting::factory()->count(50)->create();
     }
 }
