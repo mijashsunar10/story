@@ -19,12 +19,13 @@ return new class extends Migration
             $table->string('author');
             $table->foreignId('category_id')->nullable();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->string('image');
+            $table->string('category');
+            $table->string('image')->nullable();
             $table->foreignId('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->enum('audience',['child','young','adult'])->default('adult');
             $table->string('language');
-            $table->enum('copyright',['All_rights_reserved','Public_Domain'])->default('all_rights_reserved');
+            $table->enum('copyright',['All_rights_reserved','Public_Domain'])->default('All_rights_reserved');
 
             $table->timestamps();
         });

@@ -81,7 +81,7 @@ Route::get('/read',function()
     return view('frontend.read');
 
 });
-Route::get('/intro',function()
+Route::get('/stroyintro',function()
 {
     return view('frontend.stroyintro');
 });
@@ -108,7 +108,7 @@ Route::get('/writing',function()
 {
     return view('frontend.writing');
 });
-Route::get('/cat',function()
+Route::get('/fourlayer',function()
 {
     return view('frontend.fourlayer');
 });

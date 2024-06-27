@@ -17,8 +17,8 @@ return new class extends Migration
             $table->integer('ratings');
             $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreignId('story_id');
-            $table->foreign('story_id')->references('id')->on('storywritings')->onDelete('cascade');
+            $table->foreignId('storywritings_id');
+            $table->foreign('storywritings_id')->references('id')->on('storywritings')->onDelete('cascade');
             $table->timestamps();
         });
     }

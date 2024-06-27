@@ -17,11 +17,13 @@ class Storydetails extends Model
         'main_characters',
         'author',
         'category_id',
-        'user_id',
+        'category',
         'image',
+        'user_id',
         'audience',
         'language',
         'copyright',
+        
 
     ];
     public function category(): BelongsTo
@@ -29,6 +31,10 @@ class Storydetails extends Model
     {
         return $this->belongsTo(Category::class,foreignKey:'category_id',ownerKey:'id');
         // return $this->belongsTo(Category::class,foreignKey:'catego'
+    }
+    public function user():BelongsTo
+    {
+        return $this->belongsTo(User::class,foreignKey:'user_id',ownerKey:'id');
     }
 
 

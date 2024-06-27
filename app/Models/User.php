@@ -54,6 +54,10 @@ class User extends Authenticatable
         return $this->hasOne(UserDetails::class,foreignKey:'user_id',localKey:'id');
     }
 
+    public function Storydetails():HasMany
+    {
+        return $this->hasMany(Storydetails::class,foreignKey:'user_id',localKey:'id');
+    }
     public function Storywriting():HasMany
     {
         return $this->hasMany(Storywriting::class,foreignKey:'user_id',localKey:'id');

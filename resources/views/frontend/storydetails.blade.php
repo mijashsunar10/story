@@ -8,6 +8,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
   <title>Write</title>
   <script src="https://kit.fontawesome.com/2c3dd3b477.js" crossorigin="anonymous"> </script>
+  {{-- @include('layouts.head') --}}
   <style>
     .form-control:hover {
       border-color: #007bff;
@@ -43,11 +44,12 @@
        /* transition-delay: 1ms; */
     }
   </style>
+  
 </head>
 
 <body class="bg-dark bg-gradient ">
 
-
+{{-- @include('layouts.header') --}}
 
 
   <section class="p-3 p-md-4 p-xl-5">
@@ -75,14 +77,16 @@
           </div>
         </nav>
 
-        <form action="{{route('storydetails.store')}} " method="POST" enctype="multipart/form-data">
+      
+      <div class="row g-0">
+        <form action="{{route('storydetails.store')}} " method="POST" class="row" enctype="multipart/form-data">
           @csrf
-        <div class="row g-0">
+ 
           <div class="col-12 col-md-6 text-bg-primary">
             <div class="d-flex align-items-center justify-content-center h-100">
               <div class="col-10 col-xl-8 py-3">
 
-                <div class="container">
+                {{-- <div class="container">
                   <div class="d-flex justify-content-center">
                     <div class="card" style="width: 18rem; height: 24rem; position: relative; background-color: #f2f2f2; border: 1px solid #ddd; border-radius: 5px;">
                       <label for="coverImageInput" class="card-body d-flex flex-column justify-content-center align-items-center text-center">
@@ -95,7 +99,53 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> --}}
+                <div class="container">
+                  <div class="d-flex justify-content-center">
+                      <div class="card" style="width: 25rem; height: 30rem; position: relative; background-color: #f2f2f2; border: 1px solid #ddd; border-radius: 5px; overflow: hidden;" onclick="document.getElementById('coverImage').click();">
+                          <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
+                              <i id="imageIcon" class="fas fa-image" style="font-size: 48px; color: #aaa;"></i>
+                              <p id="addCoverText" class="mt-2 " style="font-weight:bold">Add a cover</p>
+                              <img id="coverImagePreview" src="#" alt="Selected Image" style="display: none; width: auto; height: 100%; max-height: 100%; object-fit:cover"/>
+                              <input type="file" name="image" class="form-control-file position-absolute" id="coverImage" style="width: 100%; height: 100%; opacity: 0; top: 0; left: 0; cursor: pointer;" onchange="previewImage(event);">
+                              @error('image')
+                              <div>
+                              <small class="text-danger">{{$message}} </small>
+                              </div>
+                            @enderror
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              
+              <script>
+                  function previewImage(event) {
+                      var reader = new FileReader();
+                      reader.onload = function() {
+                          var output = document.getElementById('coverImagePreview');
+                          var imageIcon = document.getElementById('imageIcon');
+                          var addCoverText = document.getElementById('addCoverText');
+                          output.src = reader.result;
+                          output.style.display = 'block';
+                          imageIcon.style.display = 'none';
+                          addCoverText.style.display = 'none';
+                      }
+                      reader.readAsDataURL(event.target.files[0]);
+                  }
+              
+                  document.getElementById('coverImage').addEventListener('click', function(event){
+                      event.stopPropagation();
+                  });
+              </script>
+              
+
+            
+              
+
+
+
+
+
 
                 <hr class="border-primary-subtle mb-4">
                 <h2 class="h1 mb-4">Together, we weave stories that inspire, connect, and transcend boundaries.</h2>
@@ -113,97 +163,137 @@
                   </div>
                 </div>
               </div>
-              <form action="{{route('storydetails.store')}}" method="POST">
-                @csrf
+              {{-- <form action="{{route('storydetails.store')}}" method="POST">
+                @csrf --}}
                 <div class="row gy-3 gy-md-4 overflow-hidden">
+                     {{-- <form action="{{route('storydetails.store')}}" method="POST">
+                      @csrf  --}}
+                      
 
                   <div class="col-12">
+                    
                     <label for="title" class="form-label fw-bold">Title <span><i class="fa-solid  fa-info-circle"></i></span></label>
                     <input type="text" class="form-control" name="title" id="title" placeholder="Untitled Story " required>
+                    @error('title')
+                      <div>
+                      <small class="text-danger">{{$message}} </small>
+                      </div>
+                    @enderror
+                        
                   </div>
+
 
                   <div class="col-12">
                     <label for="description" class="form-label fw-bold">Description <span><i class="fa-solid  fa-info-circle"></i></span></label>
                     <textarea class="form-control" name="description" id="description" required rows="5" style="resize: none;"></textarea>
+                    @error('description')
+                    <div>
+                      <small class="text-danger">{{$message}}</small>
+                    </div>
+                    @enderror
                   </div>
 
 
                   <div class="col-12">
-                    <label for="Main_Char" class="form-label fw-bold">Main Character <span><i class="fa-solid fa-info-circle"></i></span></label>
-                    <input type="Text" class="form-control" name="Main_Char" id="Main_Char" placeholder="Name" required>
+                    <label for="main_characters" class="form-label fw-bold">Main Character <span><i class="fa-solid fa-info-circle"></i></span></label>
+                    <input type="Text" class="form-control" name="main_characters" id="main_characters" placeholder="Name" required>
+                    @error('main_characters')
+                    <div>
+                      <small class="text-danger">{{$message}}</small>
+                    </div>
+                    @enderror
                   </div>
 
                   <div class="col-12">
-                    <label for="title" class="form-label fw-bold">Title <span><i class="fa-solid fa-info-circle"></i></span></label>
-                    <input type="text" class="form-control" name="title" id="title" placeholder="Untitled Story " required>
+                    <label for="author" class="form-label fw-bold">Title <span><i class="fa-solid fa-info-circle"></i></span></label>
+                    <input type="text" class="form-control" name="author" id="author" placeholder="Author Name" required>
+                    @error('author')
+                    <div>
+                      <small class="text-danger">{{$message}}</small>
+                    </div>
+                    @enderror
                   </div>
 
                   <div class="form-group">
-                    <label for="categoryselect" class="fw-bold">Category</label>
-                    <select class="form-control" id="categoryselect" style="width: auto;">
-                      <option selected disabled>Select a Category</option>
-                      <option> Science fiction</option>
-                      <option> Comedy</option>
-                      <option> Horror</option>
-                      <option> Love</option>
-                      <option> Fantasy</option>
-                      <option> Mystery</option>
-                      <option> Mythology</option>
-                      <option> Legend</option>
-                      <option> Fairy Tale</option>
-                      <option> Historical</option>
-                      <option> Drama</option>
-                      <option> Fable</option>
-
+                    <label for="category" class="fw-bold">Category</label>
+                    <select class="form-control" name="category" id="category" style="width: auto;">
+                      {{-- <option selected disabled>Select a Category</option> --}}
+                      <option value="comedy"> Science fiction</option>
+                      <option value="Comedy"> Comedy</option>
+                      <option value="comedy"> Horror</option>
+                      <option value="comedy"> Love</option>
+                      <option value="comedy"> Fantasy</option>
+                      <option value="comedy"> Mystery</option>
+                      <option value="comedy"> Mythology</option>
+                      <option value="comedy"> Legend</option>
+                      <option value="comedy"> Fairy Tale</option>
+                      <option value="comedy"> Historical</option>
+                      <option value="comedy"> Drama</option>
+                      <option value="comedy"> Fable</option>
                     </select>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="targetAudience" class="fw-bold">Target Audience <i class="fas fa-info-circle"></i></label>
-                    <select class="form-control" id="targetAudience" style="width: auto;">
-                      <option selected disabled>Who is your primary audience?</option>
-                      <option>Young Adult (13-18 years of age)</option>
-                      <option>New Adult (18-25 years of age)</option>
-                      <option>Adult (25+ years of age)</option>
-                    </select>
+                    @error('category')
+                    <div>
+                      <small class="text-danger">{{$message}}</small>
+                    </div>
+                    @enderror
 
                   </div>
 
                   <div class="form-group">
-                    <label for="languageSelect" class="fw-bold">Language </label>
-                    <select class="form-control" id="languageSelect" style="width: auto;">
-                      <option selected disabled>Select a Language </option>
-                      <option>English</option>
-                      <option>Français</option>
-                      <option>Italiano</option>
-                      <option>Deutsch</option>
-                      <option>Español</option>
-                      <option>Português</option>
-                      <option>Català</option>
-                      <option>Tiếng Việt</option>
-                      <option>Filipino</option>
-                      <option>Bahasa Indonesia</option>
-                      <option>Bahasa Melayu</option>
-                      <option>ภาษาไทย</option>
-                      <option>Русский</option>
-                      <option>Română</option>
+                    <label for="audience" class="fw-bold">Target Audience <i class="fas fa-info-circle"></i></label>
+                    <select class="form-control" name="audience" id="audience" style="width: auto;">
+                      {{-- <option selected disabled>Who is your primary audience?</option> --}}
+                      <option value="child">Young Adult (13-18 years of age)</option>
+                      <option value="young">New Adult (18-25 years of age)</option>
+                      <option value="adult">Adult (25+ years of age)</option>
                     </select>
+                    @error('audience')
+                    <div>
+                    <small class="text-danger">{{$message}} </small>
+                    </div>
+                  @enderror
+
                   </div>
 
                   <div class="form-group">
-                    <label for="copyrightSelect" class="fw-bold">Copyright <i class="fas fa-info-circle"></i></label>
-                    <select class="form-control" id="copyrightSelect" style="width: auto;">
-
-                      <option>All Rights Reserved</option>
-                      <option>Public Domain</option>
-                      <option>Creative Commons (CC) Attribution</option>
-                      <option>(CC) Attrib. NonCommercial</option>
-                      <option>(CC) Attrib. NonComm. NoDerivs</option>
-                      <option>(CC) Attrib. NonComm. ShareAlike</option>
-                      <option>(CC) Attribution-ShareAlike</option>
-                      <option>(CC) Attribution-NoDerivs</option>
-
+                    <label for="language" class="fw-bold">Language </label>
+                    <select class="form-control" name="language" id="language" style="width: auto;">
+                      {{-- <option selected disabled>Select a Language </option> --}}
+                      <option value="english">English</option>
+                      <option value="english">Français</option>
+                      <option value="english">Italiano</option>
+                      <option value="english">Deutsch</option>
+                      <option value="english">Español</option>
+                      <option value="english">Português</option>
+                      <option value="english">Català</option>
+                      <option value="english">Tiếng Việt</option>
+                      <option value="english">Filipino</option>
+                      <option value="english">Bahasa Indonesia</option>
+                      <option value="english">Bahasa Melayu</option>
+                      <option value="english">ภาษาไทย</option>
+                      <option value="english">Русский</option>
+                      <option value="english">Română</option>
                     </select>
+                    @error('language')
+                    <div>
+                    <small class="text-danger">{{$message}} </small>
+                    </div>
+                  @enderror
+                  </div>
+
+                  <div class="form-group">
+                    <label for="copyright" class="fw-bold">Copyright <i class="fas fa-info-circle"></i></label>
+                    <select class="form-control" id="copyright" name="copyright" style="width: auto;">
+
+                      <option value="All_rights_reserved">All Rights Reserved</option>
+                      <option value="Public_Domain">Public Domain</option>
+                      {{-- <option>Creative Commons (CC) Attribution</option> --}}
+                    </select>
+                    @error('copyright')
+                    <div>
+                    <small class="text-danger">{{$message}} </small>
+                    </div>
+                  @enderror
                   </div>
 
                   <div class="col-12">
@@ -214,18 +304,19 @@
                       </label>
                     </div>
                   </div>
+
+                  {{-- <button type="submit">Submit</button> --}}
                   <div class="col-12">
                     <div class="d-grid">
                       <button class="btn btn-outline-dark me-2" type="submit">Submit</button>
                     </div>
                   </div>
                 </div>
-              </form>
+      </form>
 
             </div>
           </div>
         </div>
-      </form>
       </div>
     </div>
   </section>
@@ -234,7 +325,7 @@
 
 
 
-  <footer class="py-3 footer">
+  {{-- <footer class="py-3 footer">
     <div class="container text-center">
       <div class="row">
         <div class="col-12">
@@ -264,7 +355,7 @@
         </div>
       </div>
     </div>
-  </footer>
+  </footer> --}}
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 

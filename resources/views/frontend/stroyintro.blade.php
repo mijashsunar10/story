@@ -163,7 +163,7 @@
                             </div>
                             <div class="anime__details__btn">
                                 <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i> Add to Favorites</a>
-                                <a href="#" class="watch-btn"><span>Start Reading</span> <i
+                                <a href="{{url('storyreading')}}" class="watch-btn"><span>Start Reading</span> <i
                                     class="fa fa-angle-right"></i></a>
                                 </div>
                             </div>

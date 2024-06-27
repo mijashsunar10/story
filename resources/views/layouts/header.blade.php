@@ -69,7 +69,7 @@
                                 
                               </li> --}}
                             <li><a href="{{route('storydetails.create')}}">Write</a></li>
-                            <li><a href="#">Contacts</a></li>
+                            <li><a href="{{url('fourlayer')}}">Read</a></li>
                         </ul>
                     </nav>
                 </div>

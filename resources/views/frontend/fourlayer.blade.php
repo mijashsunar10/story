@@ -262,14 +262,14 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <a href="{{url('writing')}}" class="btn btn-danger">Read Now</a>
+                                            <a href="{{url('stroyintro')}}" class="btn btn-danger">Read Now</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             
-                            <?php for($i=0;$i<10;$i++) { ?>
+                            <?p hp for($i=0;$i<10;$i++) { ?>
                             <div class="col-lg-3 col-md-6 col-sm-12">
                                 <div class="product__item">
                                     <div class="product__item__pic set-bg" data-setbg="img/trending/trend-1.jpg">

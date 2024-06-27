@@ -11,7 +11,7 @@ class StoreStorydetailsRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,19 @@ class StoreStorydetailsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+                'title' =>'required|string|max:255',
+                'description' =>'nullable|string',
+                'main_characters' =>'nullable|string',
+                'author' =>'required|string|max:255',
+                // 'category_id' => 'required|exists:categories|id',
+                'category_id' => 'nullable|exists:categories,id',
+                'user_id'=> 'required|exists:users,id',
+                // 'user_id'=> 'nullable|exists:users|id',
+                'image' => 'required|image|mimes:jpg,png,jpeg|max:2048',
+                // 'image' => 'nullable|string',
+                'audience' => 'required|in:child,young,adult',
+                'language' => 'required|string|max:255',
+                'copyright'=>'required|in:All_rights_reserved,Public_Domain'
         ];
     }
 }

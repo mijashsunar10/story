@@ -103,13 +103,13 @@
               <div class="d-flex align-items-center justify-content-center h-100">
                 <div class="col-10 col-xl-8 py-3">
   
-                  <div class="container ">
+                  {{-- <div class="container ">
                     <div class="d-flex justify-content-center">
                       <div class="card" style="width: 13rem; height: 13rem; position: relative; background-color: #f2f2f2; border: 1px solid #ddd; border-radius: 5px;">
                         <div class="card-body d-flex flex-column justify-content-center align-items-center text-center" onclick="document.getElementById('coverImage').click();">
-                          <i class="fas fa-image" style="font-size: 48px; color: #aaa;"></i>
+                          <i class="fas fa-image" id="imageIcon" style="font-size: 48px; color: #aaa;"></i>
                           <p class="mt-2">Add a cover</p>
-                          <input type="file" class="form-control-file position-absolute" id="coverImage" style="width: 100%; height: 100%; opacity: 0; top: 0; left: 0; cursor: pointer;">
+                          <input type="file" class="form-control-file position-absolute" id="coverImage" style="width: 100%; height: 100%; opacity: 0; top: 0; left: 0; cursor: pointer;" onchange="previewImage(event);">
                         </div>
                         {{-- <div class="position-absolute" style="bottom: 10px; right: 10px;" onclick="infoClick();">
                           <i class="fas fa-info-circle" style="font-size: 18px; color: #ccc; cursor: pointer;"></i>
@@ -118,7 +118,38 @@
                        
                       </div>
                     </div>
-                  </div>
+                  {{-- </div> --}} 
+                  <div class="container">
+                    <div class="d-flex justify-content-center">
+                        <div class="card" style="width: 13rem; height: 13rem; position: relative; background-color: #f2f2f2; border: 1px solid #ddd; border-radius: 5px;">
+                            <div class="card-body d-flex flex-column justify-content-center align-items-center text-center" onclick="document.getElementById('coverImage').click();">
+                                <i id="imageIcon" class="fas fa-image" style="font-size: 48px; color: #aaa;"></i>
+                                <img id="coverImagePreview" src="#" alt="Selected Image" style="display: none; max-width: 100%; max-height: 100%;"/>
+                                <p id="addCoverText" class="mt-2">Add a cover</p>
+                                <input type="file" class="form-control-file position-absolute" id="coverImage" style="width: 100%; height: 100%; opacity: 0; top: 0; left: 0; cursor: pointer;" onchange="previewImage(event);">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <script>
+                    function previewImage(event) {
+                        var reader = new FileReader();
+                        reader.onload = function() {
+                            var output = document.getElementById('coverImagePreview');
+                            var imageIcon = document.getElementById('imageIcon');
+                            var addCoverText = document.getElementById('addCoverText');
+                            output.src = reader.result;
+                            output.style.display = 'block';
+                            imageIcon.style.display = 'none';
+                            addCoverText.style.display = 'none';
+                        }
+                        reader.readAsDataURL(event.target.files[0]);
+                    }
+                </script>
+                
+
+                
                   <hr>
                   
                 </div>
