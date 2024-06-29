@@ -48,6 +48,8 @@
 </head>
 
 <body class="bg-dark bg-gradient ">
+  
+@include('layouts.nav');
 
 {{-- @include('layouts.header') --}}
 
@@ -132,21 +134,11 @@
                       }
                       reader.readAsDataURL(event.target.files[0]);
                   }
-              
                   document.getElementById('coverImage').addEventListener('click', function(event){
                       event.stopPropagation();
                   });
               </script>
               
-
-            
-              
-
-
-
-
-
-
                 <hr class="border-primary-subtle mb-4">
                 <h2 class="h1 mb-4">Together, we weave stories that inspire, connect, and transcend boundaries.</h2>
                 <p class="lead m-0">Every voice matters in our shared journey of creativity.</p>
@@ -205,7 +197,7 @@
                   </div>
 
                   <div class="col-12">
-                    <label for="author" class="form-label fw-bold">Title <span><i class="fa-solid fa-info-circle"></i></span></label>
+                    <label for="author" class="form-label fw-bold">Author<span><i class="fa-solid fa-info-circle"></i></span></label>
                     <input type="text" class="form-control" name="author" id="author" placeholder="Author Name" required>
                     @error('author')
                     <div>
@@ -215,10 +207,10 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="category" class="fw-bold">Category</label>
-                    <select class="form-control" name="category" id="category" style="width: auto;">
+                    <label for="category_id" class="fw-bold">Category</label>
+                    <select class="form-control" name="category_id" id="category_id" style="width: auto;">
                       {{-- <option selected disabled>Select a Category</option> --}}
-                      <option value="comedy"> Science fiction</option>
+                      {{-- <option value="comedy"> Science fiction</option>
                       <option value="Comedy"> Comedy</option>
                       <option value="comedy"> Horror</option>
                       <option value="comedy"> Love</option>
@@ -229,7 +221,11 @@
                       <option value="comedy"> Fairy Tale</option>
                       <option value="comedy"> Historical</option>
                       <option value="comedy"> Drama</option>
-                      <option value="comedy"> Fable</option>
+                      <option value="comedy"> Fable</option> --}} 
+
+                      @foreach(\App\Models\Category::all() as $category)
+                      <option value="{{ $category->id }}">{{$category->name}}</option>
+                   @endforeach
                     </select>
                     @error('category')
                     <div>
@@ -312,9 +308,8 @@
                     </div>
                   </div>
                 </div>
-      </form>
-
-            </div>
+          </form>
+              </div>
           </div>
         </div>
       </div>

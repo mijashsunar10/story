@@ -43,7 +43,7 @@ class StorydetailsController extends Controller
          $storydetails->main_characters =$request->main_characters;
          $storydetails->author =$request->author;
          $storydetails->category_id=$request->category_id;
-         $storydetails->category=$request->category;
+        //  $storydetails->category=$request->category;
          
          if ($request->hasFile('image')) {
              $image = $request->file('image');
@@ -59,7 +59,7 @@ class StorydetailsController extends Controller
         $storydetails->copyright=$request->copyright;
         
         $storydetails->save();
-        return redirect('frontend.index');      
+        return redirect()->route('storydetails.index');      
         //image..
         //image
        //  $storydetails->title =$request->title;

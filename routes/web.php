@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\Index;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StorydetailsController;
 use App\Models\Storydetails;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\StoryController;
 
@@ -116,6 +118,22 @@ Route::get('/writing2',function()
 {
     return view('frontend.writing2');
 });
+Route::get('/template',function()
+{
+    return view('layouts.index');
+});
+Route::get('/userdashboard',function()
+{
+    return view('layouts.userdashboard');
+});
 
+Route::resource('/',Index::class)->middleware('auth');
 Route::resource('storydetails',StorydetailsController::class);
+
+
+
 require __DIR__.'/auth.php';
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

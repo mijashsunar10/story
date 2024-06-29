@@ -65,7 +65,9 @@
                                 </div>
                             </div>
                         </div>
+                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <div class="row">
+                           
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product__item">
                                     <div class="product__item__pic set-bg" data-setbg="img/trending/blast.jpg">
@@ -134,6 +136,8 @@
                                     </div>
                                 </div>
                             </div>
+                       
+                           
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product__item">
                                     <div class="product__item__pic set-bg" data-setbg="img/trending/HELLO.jpg">
@@ -169,6 +173,45 @@
                                 </div>
                             </div>
                         </div>
+                        </button>
+                    </button>
+                       
+                    {{-- modal --}}
+                    <div class="modal fade" id="exampleModal" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content" style="background:whitesmoke">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel" class="fw-bold">Black Blood ☆ Tae...</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body ">
+                                    <div class="card shadow-sm ">
+                                        <div class="row g-0">
+                                            <div class="col-md-4">
+                                                <img src="img/space.jpg" class="img-fluid rounded-start" alt="Book Image">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="card-body mb-0 p-1">
+                                                    <h5 class="card-title ">Black Blood ☆ Tae...</h5>
+                                                    <p class="card-text">
+                                                        <span class="badge bg-secondary">62 parts</span>
+                                                         <span class="badge bg-success">Complete</span></p>
+                                                    <p class="card-text text-muted">“Just let me have a taste, princess...” <br>© _little_BTS_ARMY No translations allowed. | *Contains triggering content* | <em>In a world where vampires rule and humans are mere blood slaves...</em></p>
+                                                    <p class="card-text">Aya, a captivating beauty with a fierce spirit, was raised in the shadow of a vampire-controlled world, brought up within the walls of an dirty...</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <a href="{{url('stroyintro')}}" class="btn btn-danger">Read Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                     </div>
                     <div class="popular__product">
                         <div class="row">

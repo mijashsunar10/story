@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('author');
             $table->foreignId('category_id')->nullable();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->string('category');
+            // $table->string('category');
             $table->string('image')->nullable();
             $table->foreignId('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

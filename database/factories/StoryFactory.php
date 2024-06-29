@@ -19,8 +19,6 @@ class StoryFactory extends Factory
     {
         return [
             
-
-
         ];
     }
 }

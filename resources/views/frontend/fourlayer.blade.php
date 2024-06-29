@@ -269,7 +269,7 @@
                             </div>
 
                             
-                            <?p hp for($i=0;$i<10;$i++) { ?>
+                            <?php for($i=0;$i<10;$i++) { ?>
                             <div class="col-lg-3 col-md-6 col-sm-12">
                                 <div class="product__item">
                                     <div class="product__item__pic set-bg" data-setbg="img/trending/trend-1.jpg">
