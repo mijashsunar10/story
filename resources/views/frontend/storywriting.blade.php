@@ -103,21 +103,21 @@
               <div class="d-flex align-items-center justify-content-center h-100">
                 <div class="col-10 col-xl-8 py-3">
   
-                  {{-- <div class="container ">
-                    <div class="d-flex justify-content-center">
+                  {{-- <div class="container "> --}}
+                    {{-- <div class="d-flex justify-content-center">
                       <div class="card" style="width: 13rem; height: 13rem; position: relative; background-color: #f2f2f2; border: 1px solid #ddd; border-radius: 5px;">
                         <div class="card-body d-flex flex-column justify-content-center align-items-center text-center" onclick="document.getElementById('coverImage').click();">
                           <i class="fas fa-image" id="imageIcon" style="font-size: 48px; color: #aaa;"></i>
                           <p class="mt-2">Add a cover</p>
                           <input type="file" class="form-control-file position-absolute" id="coverImage" style="width: 100%; height: 100%; opacity: 0; top: 0; left: 0; cursor: pointer;" onchange="previewImage(event);">
                         </div>
-                        {{-- <div class="position-absolute" style="bottom: 10px; right: 10px;" onclick="infoClick();">
+                         <div class="position-absolute" style="bottom: 10px; right: 10px;" onclick="infoClick();">
                           <i class="fas fa-info-circle" style="font-size: 18px; color: #ccc; cursor: pointer;"></i>
                           
-                        </div> --}}
+                        </div>
                        
                       </div>
-                    </div>
+                    </div> --}}
                   {{-- </div> --}} 
                   <div class="container">
                     <div class="d-flex justify-content-center">
@@ -167,6 +167,38 @@
         </div>
       </div>
     </section>
+
+
+
+    <div class="container mt-4">
+      @foreach ($categories as $category)
+      <div class="mb-3">
+        <h5>{{ $category->name }}</h5>
+        @forelse ($category->storyDetails as $story)
+        <div class="card mb-3">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="{{ asset('uploads/' . $story->image) }}" class="img-fluid rounded-start" alt="{{ $story->title }}">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{{ $story->title }}</h5>
+                <p class="card-text"><strong>Main Characters: </strong>{{ $story->main_characters }}</p>
+                <p class="card-text"><strong>Author: </strong>{{ $story->author }}</p>
+                <p class="card-text"><strong>Audience: </strong>{{ $story->audience }}</p>
+                <p class="card-text"><strong>Language: </strong>{{ $story->language }}</p>
+                <p class="card-text"><strong>Copyright: </strong>{{ $story->copyright }}</p>
+                <p class="card-text">{{ $story->description }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        @empty
+        <p>No stories available in this category.</p>
+        @endforelse
+      </div>
+      @endforeach
+    </div>
   
    
   </form>

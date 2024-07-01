@@ -144,6 +144,8 @@ Route::resource('/admin/login',AdminLoginController::class);
 Route::get('/fourlayer', [FourLayerController::class, 'index'])->name('fourlayer.index');
 Route::get('/fourlayer/category/{categoryId}', [FourLayerController::class, 'showByCategory'])->name('fourlayer.category');
 
+Route::get('/storywriting', [FourLayerController::class, 'showStorywritingPage'])->name('storywriting');
+
 
 
 

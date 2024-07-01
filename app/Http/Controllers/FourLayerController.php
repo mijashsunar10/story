@@ -18,8 +18,25 @@ class FourLayerController extends Controller
         $categories = Category::all();    
         // Fetch all story details with their categories
         $storydetails = Storydetails::with('category')->get();
+
         return view('frontend.fourlayer', compact('storydetails', 'categories'));
+
     }
+
+    public function showStorywritingPage()
+    {
+    $categories = Category::all();
+    // Fetch all story details with their categories
+    $storydetails = Storydetails::with('category')->get();
+    
+    return view('frontend.storywriting', compact('storydetails', 'categories'));
+    }
+
+
+
+
+
+
 
     /**
      * Show the form for creating a new resource.
