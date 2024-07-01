@@ -4,7 +4,7 @@
             <div class="col-lg-2">
                 <div class="header__logo">
                     {{-- <a href="./index.blade.php" class="fs-1 fw-bold " > --}}
-                    <a href="./index.blade.php" >
+                    <a href="{{url('/')}}" >
                         {{-- <img class="img-fluid " src="img/symthesis.png" alt=""> --}}
                         {{-- <span class="text-light fs-3 fw-bold">Simthesis</span> --}}
                         <img src="img/logo.png" alt="">
@@ -18,19 +18,19 @@
                     <nav class="header__menu mobile-menu">
                         <ul>
                             <li class="active"><a href="{{url('/')}}">Home</a></li>
-                            <li><a href="{{url('categories')}}">Categories<span class="arrow_carrot-down"></span></a>
+                            <li><a href="{{url('fourlayer')}}">Categories<span class="arrow_carrot-down"></span></a>
                                 <ul class="dropdown">
-                                    <li><a href="{{url('categories')}}">Science Fiction</a></li>
-                                    <li><a href="{{url('adetails')}}">Comedy</a></li>
-                                    <li><a href="{{url('awatching')}}">Love</a></li>                                    <li><a href="{{url('signup')}}">Sign Up</a></li>
-                                    <li><a href="{{url('awatching')}}">Fantasy</a></li>                                    <li><a href="{{url('signup')}}">Sign Up</a></li>
-                                    <li><a href="{{url('login')}}">Mystery</a></li>
-                                    <li><a href="{{url('login')}}">Mythology</a></li>
-                                    <li><a href="{{url('login')}}">Legend</a></li>
-                                    <li><a href="{{url('login')}}">Fairy Tale</a></li>
-                                    <li><a href="{{url('login')}}">Historical</a></li>
-                                    <li><a href="{{url('login')}}">Drama</a></li>
-                                    <li><a href="{{url('login')}}">Fable</a></li>
+                                    <li><a href="{{url('fourlayer')}}">Science Fiction</a></li>
+                                    <li><a href="{{url('fourlayer')}}">Comedy</a></li>
+                                    <li><a href="{{url('fourlayer')}}">Love</a></li>                                    <li><a href="{{url('signup')}}">Sign Up</a></li>
+                                    <li><a href="{{url('fourlayer')}}">Fantasy</a></li>                                    <li><a href="{{url('signup')}}">Sign Up</a></li>
+                                    <li><a href="{{url('fourlayer')}}">Mystery</a></li>
+                                    <li><a href="{{url('fourlayer')}}">Mythology</a></li>
+                                    <li><a href="{{url('fourlayer')}}">Legend</a></li>
+                                    <li><a href="{{url('fourlayer')}}">Fairy Tale</a></li>
+                                    <li><a href="{{url('fourlayer')}}">Historical</a></li>
+                                    <li><a href="{{url('fourlayer')}}">Drama</a></li>
+                                    <li><a href="{{url('fourlayer')}}">Fable</a></li>
                                 </ul>
 
                                 {{-- <ul class="dropdown">

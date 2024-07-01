@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Controllers\AdminLoginController;
+use App\Http\Controllers\FourLayerController;
 use App\Http\Controllers\Index;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StorydetailsController;
+use App\Models\AdminLogin;
+use App\Models\FourLayer;
 use App\Models\Storydetails;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -127,8 +131,19 @@ Route::get('/userdashboard',function()
     return view('layouts.userdashboard');
 });
 
+Route::get('/four1',function()
+{
+    return view('frontend.four1');
+});
+
+
 Route::resource('/',Index::class)->middleware('auth');
 Route::resource('storydetails',StorydetailsController::class);
+Route::resource('/admin/login',AdminLoginController::class);
+
+Route::get('/fourlayer', [FourLayerController::class, 'index'])->name('fourlayer.index');
+Route::get('/fourlayer/category/{categoryId}', [FourLayerController::class, 'showByCategory'])->name('fourlayer.category');
+
 
 
 

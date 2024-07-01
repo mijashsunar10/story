@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Storydetails;
 use App\Http\Requests\StoreStorydetailsRequest;
 use App\Http\Requests\UpdateStorydetailsRequest;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 
@@ -18,6 +19,12 @@ class StorydetailsController extends Controller
         $storydetails = Storydetails::all();
         $data = compact('storydetails');
         return view('frontend.index', $data);
+
+        //Fetch all the categories and display them as filters
+        // $categories = Category::all();
+        // $storydetails = Storydetails::with('category')->get();
+        // return View('frontend.fourlayer',compact());
+    
     }
 
     /**
@@ -73,9 +80,11 @@ class StorydetailsController extends Controller
    
      * Display the specified resource.
      */
-    public function show(Storydetails $storydetails)
+    public function show($id)
     {
-        //
+        // $storydetails = Storydetails::with('Category')->findOrFail($id);
+        // return view('frontend.fourlayer', compact('storydetails'));
+        
     }
 
     /**

@@ -15,5 +15,5 @@
         </div>
     </div>
 </x-app-layout> --}}
-
+{{-- @extends('layouts.index'); --}}
 @extends('layouts.userdashboard')

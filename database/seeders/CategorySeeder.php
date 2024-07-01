@@ -19,7 +19,7 @@ class CategorySeeder extends Seeder
         {
             $categories = [
 
-                ['name'=>'Science Fiction', 'slug'=>'science-fiction', 'description'=>'A genre of speculative fiction.'],
+                ['name'=>'Science Fiction','slug'=>'science-fiction', 'description'=>'A genre of speculative fiction.'],
                 ['name' => 'Comedy', 'slug' => 'comedy', 'description' => 'A genre of film that emphasizes humor.'],
                 ['name' => 'Horror', 'slug' => 'horror', 'description' => 'A genre intended to scare.'],
                 ['name' => 'Love', 'slug' => 'love', 'description' => 'A genre centered on romantic love.'],

@@ -124,7 +124,7 @@
                                 <h3>Fate Stay Night: Unlimited Blade</h3>
                                 <span> Feito／sutei naito</span>
                             </div>
-                            <div class="anime__details__rating">
+                            <div class="anime__details__rating">x
                                 <div class="rating">
                                     <a href="#"><i class="fa fa-star"></i></a>
                                     <a href="#"><i class="fa fa-star"></i></a>
