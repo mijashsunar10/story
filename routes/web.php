@@ -5,9 +5,11 @@ use App\Http\Controllers\FourLayerController;
 use App\Http\Controllers\Index;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StorydetailsController;
+use App\Http\Controllers\StorywritingController;
 use App\Models\AdminLogin;
 use App\Models\FourLayer;
 use App\Models\Storydetails;
+use App\Models\Storywriting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\StoryController;
@@ -144,7 +146,14 @@ Route::resource('/admin/login',AdminLoginController::class);
 Route::get('/fourlayer', [FourLayerController::class, 'index'])->name('fourlayer.index');
 Route::get('/fourlayer/category/{categoryId}', [FourLayerController::class, 'showByCategory'])->name('fourlayer.category');
 
-Route::get('/storywriting', [FourLayerController::class, 'showStorywritingPage'])->name('storywriting');
+// Route::get('/storywriting', [Storywriting::class, 'index'])->name('storywriting');
+// Route::get('/storywriting/category/{categoryId}', [Storywriting::class, 'showByCategory'])->name('storywriting.category');
+
+Route::resource('storywriting',StorywritingController::class);
+
+Route::get('/storywriting/storydetails/{storydetailsId}', [Storywriting::class, 'showByStorydetails'])->name('storywriting.details');
+
+
 
 
 

@@ -209,19 +209,6 @@
                   <div class="form-group">
                     <label for="category_id" class="fw-bold">Category</label>
                     <select class="form-control" name="category_id" id="category_id" style="width: auto;">
-                      {{-- <option selected disabled>Select a Category</option> --}}
-                      {{-- <option value="comedy"> Science fiction</option>
-                      <option value="Comedy"> Comedy</option>
-                      <option value="comedy"> Horror</option>
-                      <option value="comedy"> Love</option>
-                      <option value="comedy"> Fantasy</option>
-                      <option value="comedy"> Mystery</option>
-                      <option value="comedy"> Mythology</option>
-                      <option value="comedy"> Legend</option>
-                      <option value="comedy"> Fairy Tale</option>
-                      <option value="comedy"> Historical</option>
-                      <option value="comedy"> Drama</option>
-                      <option value="comedy"> Fable</option> --}} 
 
                       @foreach(\App\Models\Category::all() as $category)
                       <option value="{{ $category->id }}">{{$category->name}}</option>

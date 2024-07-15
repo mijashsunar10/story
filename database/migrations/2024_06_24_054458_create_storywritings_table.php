@@ -17,6 +17,10 @@ return new class extends Migration
             $table->string('title');
             $table->longText('description');
             $table->string('slug')->unique();
+            $table->foreignId('storydetails_id');
+            $table->foreign('storydetails_id')->references('id')->on('storydetails')->onDelete('cascade');
+            $table->foreignId('category_id');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

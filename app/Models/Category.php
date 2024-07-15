@@ -20,5 +20,10 @@ class Category extends Model
     {
         return $this ->hasMany(Storydetails::class,foreignKey:'category_id',localKey:'id');
     }
+    public function Storywriting():HasMany
+    {
+        return $this ->hasMany(Storywriting::class,foreignKey:'category_id',localKey:'id');
+    }
+
 }
 

@@ -86,14 +86,47 @@
         border-radius: 50px;
      }
 
+     .card-body {
+      position: relative;
+    }
+
+    #coverImagePreview {
+      display: none;
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 5px;
+    }
+
   </style>
 </head>
 
 <body class="bg-dark bg-gradient ">
+  <form action="{{route('storywriting.store')}}" method="POST" class="row" enctype="multipart/form-data">
+    @csrf
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <div class="d-flex align-items-center">
+        <a href="{{url('/')}}">
+        <button class="btn btn-outline-secondary me-2 btn-dark text-white " type="button">&lt;</button>
+      </a>
+        <div class="m-0">
+          <small class="text-muted d-block">Add Story Name</small>
+          <h5 class="navbar-brand">Untitled Story</h5>
+        </div>
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <div>
+          <button class="btn btn-outline-secondary me-2" type="button">Cancel</button>
+          <button class="btn btn-dark" type="submit">Submit</button>
+        </div>
+      </div>
+    </div>
+  </nav>
 
-@include('layouts.nav');
-
-  <form action="">
+  
     <section class="p-3 p-md-4 p-xl-5">
       <div class="container">
         <div class="card border-light-subtle shadow-sm  ">
@@ -121,33 +154,36 @@
                   {{-- </div> --}} 
                   <div class="container">
                     <div class="d-flex justify-content-center">
-                        <div class="card" style="width: 13rem; height: 13rem; position: relative; background-color: #f2f2f2; border: 1px solid #ddd; border-radius: 5px;">
-                            <div class="card-body d-flex flex-column justify-content-center align-items-center text-center" onclick="document.getElementById('coverImage').click();">
-                                <i id="imageIcon" class="fas fa-image" style="font-size: 48px; color: #aaa;"></i>
-                                <img id="coverImagePreview" src="#" alt="Selected Image" style="display: none; max-width: 100%; max-height: 100%;"/>
-                                <p id="addCoverText" class="mt-2">Add a cover</p>
-                                <input type="file" class="form-control-file position-absolute" id="coverImage" style="width: 100%; height: 100%; opacity: 0; top: 0; left: 0; cursor: pointer;" onchange="previewImage(event);">
-                            </div>
+                      <div class="card" style="width: 13rem; height: 13rem; position: relative; background-color: #f2f2f2; border: 1px solid #ddd; border-radius: 5px;">
+                        <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
+                          <i id="imageIcon" class="fas fa-image" style="font-size: 48px; color: #aaa;" onclick="triggerFileInput();"></i>
+                          <img id="coverImagePreview" src="#" alt="Selected Image" />
+                          <p id="addCoverText" class="mt-2" onclick="triggerFileInput();">Add a cover</p>
+                          <input type="file" class="form-control-file position-absolute" id="coverImage" style="width: 100%; height: 100%; opacity: 0; top: 0; left: 0; cursor: pointer;" onchange="previewImage(event);">
                         </div>
+                      </div>
                     </div>
-                </div>
-                
-                <script>
-                    function previewImage(event) {
-                        var reader = new FileReader();
-                        reader.onload = function() {
-                            var output = document.getElementById('coverImagePreview');
-                            var imageIcon = document.getElementById('imageIcon');
-                            var addCoverText = document.getElementById('addCoverText');
-                            output.src = reader.result;
-                            output.style.display = 'block';
-                            imageIcon.style.display = 'none';
-                            addCoverText.style.display = 'none';
-                        }
-                        reader.readAsDataURL(event.target.files[0]);
+                  </div>
+
+                  <script>
+                    function triggerFileInput() {
+                      document.getElementById('coverImage').click();
                     }
-                </script>
-                
+
+                    function previewImage(event) {
+                      var reader = new FileReader();
+                      reader.onload = function() {
+                        var output = document.getElementById('coverImagePreview');
+                        var imageIcon = document.getElementById('imageIcon');
+                        var addCoverText = document.getElementById('addCoverText');
+                        output.src = reader.result;
+                        output.style.display = 'block';
+                        imageIcon.style.display = 'none';
+                        addCoverText.style.display = 'none';
+                      }
+                      reader.readAsDataURL(event.target.files[0]);
+                    }
+                  </script>
 
                 
                   <hr>
@@ -158,7 +194,7 @@
              <div class="text_area">
               <textarea name="" id="" cols="50" rows="1" class=" texta1 fs-1 border-0 mb-0" placeholder="Untitled:Part 1"></textarea>
                   <hr class="m-0">
-                  <textarea name="" id="" cols="100" rows="30" class="texta2 fs-5 border-0" placeholder="Please start your story here...."></textarea> 
+                  <textarea name="" id="" cols="100" rows="20" class="texta2 fs-5 border-0" placeholder="Please start your story here...."></textarea> 
               </div>
   
               </div>
@@ -166,11 +202,13 @@
           </div>
         </div>
       </div>
+
+      
     </section>
 
 
 
-    <div class="container mt-4">
+    {{-- <div class="container mt-4">
       @foreach ($categories as $category)
       <div class="mb-3">
         <h5>{{ $category->name }}</h5>
@@ -199,7 +237,7 @@
       </div>
       @endforeach
     </div>
-  
+   --}}
    
   </form>
   <footer class="py-3 footer">

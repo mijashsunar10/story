@@ -7,7 +7,7 @@ use App\Http\Requests\StoreStorydetailsRequest;
 use App\Http\Requests\UpdateStorydetailsRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 
 class StorydetailsController extends Controller
 {
@@ -18,13 +18,7 @@ class StorydetailsController extends Controller
     {
         $storydetails = Storydetails::all();
         $data = compact('storydetails');
-        return view('frontend.index', $data);
-
-        //Fetch all the categories and display them as filters
-        // $categories = Category::all();
-        // $storydetails = Storydetails::with('category')->get();
-        // return View('frontend.fourlayer',compact());
-    
+        return view('frontend.storywriting', $data);    
     }
 
     /**
@@ -35,55 +29,62 @@ class StorydetailsController extends Controller
         return view('frontend.storydetails');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
-    {
-    //  dd($request);
+{
+    // Validate the incoming request
+    $request->validate([
+        'title' => 'required|string|max:255',
+        'description' => 'nullable|string',
+        'main_characters' => 'nullable|string',
+        'author' => 'required|string|max:255',
+        'category_id' => 'nullable|exists:categories,id',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust as needed
+        'audience' => 'required|in:child,young,adult',
+        'language' => 'required|string',
+        'copyright' => 'required|in:All_rights_reserved,Public_Domain',
+    ]);
 
+    // Retrieve the currently authenticated user's ID
+    $user_id = Auth()->user()->id;
+    // Create a new Storydetails instance and assign values
+    $storydetails = new Storydetails();
 
-
-         $storydetails = new Storydetails;
-         $storydetails->title =$request->title;
-         $storydetails->description =$request->description;
-         $storydetails->main_characters =$request->main_characters;
-         $storydetails->author =$request->author;
-         $storydetails->category_id=$request->category_id;
-        //  $storydetails->category=$request->category;
-         
-         if ($request->hasFile('image')) {
-             $image = $request->file('image');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('uploads'), $imageName);
-            $storydetails->image= $imageName;
-        }
-
-        
-        $storydetails->user_id=$request->user_id;
-        $storydetails->audience=$request->audience;
-        $storydetails->language=$request->language;
-        $storydetails->copyright=$request->copyright;
-        
-        $storydetails->save();
-        return redirect()->route('storydetails.index');      
-        //image..
-        //image
-       //  $storydetails->title =$request->title;
-    
-       // $name=strtolower(str_replace(" ","",$request->title)."-".time().".".$request->image->extension());
-       // $request->image->move(public_path('uploads',$name));
-       // $storydetails->image = $name;
+   
+// dd($user_id);
+    // Handle file upload if there's an image
+    if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $imageName = time() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('uploads'), $imageName);
+        $storydetails->image= $imageName;
+    } 
+    else {  
+        $imageName = null;
     }
-    
+
+    $storydetails->title = $request->title;
+    $storydetails->description = $request->description;
+    $storydetails->main_characters = $request->main_characters;
+    $storydetails->author = $request->author;
+    $storydetails->category_id = $request->category_id;
+    $storydetails->image = $imageName;
+    $storydetails->user_id = $user_id;
+    $storydetails->audience = $request->audience;
+    $storydetails->language = $request->language;
+    $storydetails->copyright = $request->copyright;
+
+    // Save the storydetails instance
+    $storydetails->save();
+
+    // Redirect to a specific route or action after storing
+    return redirect()->route('storydetails.index')->with($storydetails->title);
+}
     /**
    
      * Display the specified resource.
      */
     public function show($id)
     {
-        // $storydetails = Storydetails::with('Category')->findOrFail($id);
-        // return view('frontend.fourlayer', compact('storydetails'));
         
     }
 
@@ -92,7 +93,7 @@ class StorydetailsController extends Controller
      */
     public function edit(Storydetails $storydetails)
     {
-        //
+        
     }
 
     /**
@@ -108,6 +109,6 @@ class StorydetailsController extends Controller
      */
     public function destroy(Storydetails $storydetails)
     {
-        //
+        
     }
 }

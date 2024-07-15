@@ -261,12 +261,6 @@
     
     
     <!-- Modal -->
-
-
-
-
-
-
     <!-- Footer Section Begin -->
     <footer class="footer">
         <div class="page-up">

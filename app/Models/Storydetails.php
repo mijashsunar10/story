@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Storydetails extends Model
 {
@@ -36,6 +37,8 @@ class Storydetails extends Model
     {
         return $this->belongsTo(User::class,foreignKey:'user_id',ownerKey:'id');
     }
-
-
+    public function Storywriting():HasOne
+    {
+        return $this->hasOne(Storywriting::class,foreignKey:'storydetails_id',localKey:'id');
+    }
 }
